@@ -18,7 +18,7 @@ class AddProductService{
           'description': description,
           'image': image,
           'category': category,
-        }
+        }, token: null
     );
     return ProductModel.fromJson(data);
   }
