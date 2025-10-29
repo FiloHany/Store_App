@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:store/screens/home_page.dart';
+import 'package:store/screens/update_product_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +16,8 @@ class MyApp extends StatelessWidget {
       
       debugShowCheckedModeBanner: false,
       routes: {
-        HomePage.id: (context) => const HomePage(),
+        HomePage.id: (context) => HomePage(),
+        UpdateProductPage.id: (context) => UpdateProductPage(),
       },
 
       initialRoute: HomePage.id,

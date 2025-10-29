@@ -3,7 +3,7 @@ import 'package:store/models/product_model.dart';
 
 class UpdateProductServices{
 
-  Future<ProductModel> addProduct (
+  Future<ProductModel> updateProduct (
       {required String title,
       required String price,
       required String description,
