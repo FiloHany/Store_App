@@ -70,13 +70,14 @@ class _UpdateProductPageState extends State<UpdateProductPage> {
                 const SizedBox(height: 20),
                 CustomeButton(
                   text: 'Update Product',
-                  onPressed: () {
+                  onPressed: () async{
                     setState(() {
                       isloading = true ;
                     });
                     // Implement update product functionality here
                     try {
-                      updateProduct(product);
+                      await updateProduct(product);
+                      print('Product Updated');
                     } on Exception catch (e) {
                       print(e.toString());
                     }
@@ -93,12 +94,13 @@ class _UpdateProductPageState extends State<UpdateProductPage> {
     );
   }
 
-  void updateProduct(ProductModel product) {
-    UpdateProductServices().updateProduct(
-      title: ProductName!,
-      price: ProductPrice!,
-      description: ProductDescription!,
-      image: ProductImageUrl!,
+  Future<void> updateProduct(ProductModel product) async {
+    await UpdateProductServices().updateProduct(
+      id: product.id,
+      title: ProductName == null ? product.title : ProductName!,
+      price: ProductPrice == null ? product.price.toString() : ProductPrice!,
+      description: ProductDescription == null ? product.description : ProductDescription!,
+      image: ProductImageUrl == null ? product.image : ProductImageUrl!,
       category: product.category,
     );
   }

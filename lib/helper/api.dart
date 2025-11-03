@@ -51,21 +51,28 @@ class API {
       @required dynamic body,
       @required String? token}) async {
     Map<String, String> headers = {};
-    headers.addAll({'Content-Type': 'application/json'});
+    headers.addAll({
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    });
     if (token != null) {
       headers.addAll({
         'Authorization': ' Bearer $token',
       });
     }
-    http.Response response = await http.post(
+    print('URL: $url, Body: $body, token: $token');
+    http.Response response = await http.put(
         Uri.parse(
           url,
         ),
-        body: body,
+        body: jsonEncode(body),
         headers: headers);
 
     if (response.statusCode == 200) {
+      print('Response status: ${response.statusCode}');
+      print('Response body: ${response.body}');
       Map<String, dynamic> data = jsonDecode(response.body);
+      print('Response data: $data');
       return data;
     } else {
       throw Exception(

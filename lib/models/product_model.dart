@@ -1,6 +1,6 @@
 class ProductModel {
   // Use types that match the fakestoreapi response
-  final int id;
+  final dynamic id;
   final String title;
   final double price;
   final String description;
